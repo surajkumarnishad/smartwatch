@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title%} {% endblock %}
+    </title>
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/jquery-ui.min.css' %}">
+    <link href="{% static 'css/all.css' %}" rel="stylesheet">
+    <link rel="icon" href="{% static 'images/logoicon.png' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/design.css' %}">
+</head>
+<style>
+body{
+  background:rgba(144, 202, 249, .3);
+}
+#loader{
+      width: 100%;
+      height: 100vh;
+      background:#d6dce1;
+      align-items: center;
+      justify-content: center;
+      display: flex;
+      position: fixed;
+      z-index:999999;
+    }
+#circle{
+      height: 100px;
+      width: 100px;
+      border-radius: 50%;
+      border:8px solid darkblue;
+      border-left-color: red;
+      //animation-name: round;
+      //animation-duration:1s;
+      //animation-iteration-count: infinite;
+      //animation-direction:initial;
+      animation: round .7s infinite linear reverse;
+      position: absolute;
+      }
+@keyframes round
+    {
+      from{
+        transform: rotate(360deg);
+      }
+    }
+.ic{
+    margin:0px 5px;
+    border-radius: 50%;
+    transition: all ease 1s;
+    font-size: 15px;
+    color: white;
+    }
+  .ic:hover
+  {
+    transform: rotate(360deg) scale(1.4);
+    transition: all ease 1s;
+  }
+ .navbar-brand{
+    font-family:impact;
+    padding-left:2%;
+    font-size:35px;
+    align-items:center;
+
+    }
+    .card{
+      transition: transform .5s;
+    }
+    .card:hover{
+      transform: translateY(-17px) scaleX(1.1);
+      box-shadow: 0px 0px 12px 8px rgba(0, 0, 0, .4);
+      transition: transform .5s;
+      border: 2px groove orange;
+    }
+    #menu ul li a
+    {
+      border-radius: 8px;
+      color: white;
+    }
+    #menu ul li a:hover
+    {
+    color:white;
+    background: #FF6D00;
+    border-radius: 8px;
+    }
+    #menu ul li ul
+    {
+      background: rgba(0, 0, 0, 1.0);
+    }
+    .ics{
+        font-size: 50px;
+      }
+      #navbarSupportedContent
+      {
+      text-align:center;
+      }
+
+</style>
+
+<body onload="myFunction()"> 
+
+<!-- Preloader Start-->
+<div id="loader">
+    <div id="circle"></div>
+    <img src="{% static 'images/watch.png'%}" height="145.4px" width="110px" style="position: absolute; top: 242px; left: 624px;">
+    <div id="load" style="top:380px;left: 610px; font-size:25px; position:absolute;"><b>LOADDING....</b></div>
+</div>
+<!-- Preloader End-->
+
+<div class="container-fluid outer">
+    <div class="row topest bg-secondary">
+        <div class="col-sm-4 top">
+            <p style="font-family: impact; color: balck;" class="p-0 m-0">WELCOME TO <i style="color:#FF6D00;">Smart</i><i
+                    style="color:white;">Watch</i>&nbsp&nbsp PVT. LTD. INDIA</p>
+        </div>
+        <div class="col-sm-5 top" style="color:#ff6d00">
+            <marquee onmouseover="stop()" onmouseleave="start()" behavior="alternate"><i
+                    class="fa fa-phone fa fa-spin"></i>&nbsp&nbsp+919315080925 |&nbsp&nbsp&nbsp <i
+                    class="fa fa-envelope"></i>&nbsp&nbsp <a href="https://mail.google.com/mail/u/0/"
+                                                             style="text-decoration: none; color: #ff6d00;">surajkumarnishad1998@gamil.com</a>
+            </marquee>
+        </div>
+        <div class="col-sm-3 top">
+            <a href="#"><i class="fab fa-facebook ic" title="Facebook"></i></a>
+            <a href="#"><i class="fab fa-whatsapp ic" title="Whatsapp"></i></a>
+            <a href="#"><i class="fab fa-instagram ic" title="Instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter ic" title="Twitter"></i></a>
+            <a href="#"><i class="fab fa-youtube ic" title="Youtube"></i></a>
+        </div>
+    </div>
+    <div class="row menu" id="topper">
+
+        <!--Start Menu-->
+        <nav class="navbar navbar-expand-lg navbar-light px-1" id="menu" style="background:rgba(0, 0, 0, 1.0);">
+            <div class="container-fluid">
+                <a class="navbar-brand me-5 py-0 text-light" href="#"><i style="color:#FF6D00;">Smart</i><i
+                        style="color:;">Watch</i><i style="color:#FF6D00;" class="fa fa-shopping-cart"></i></a>
+                <button class="navbar-toggler bg-light text-dark" style="font-size: 17px;" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon" style="height: 20px; width: 20px; color: white;"></span> MENU
+                </button>
+                <div class="collapse navbar-collapse py-0" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 navpad">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/user/"><i
+                                    class="fa fa-home"></i> Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/user/about"><i
+                                    class="fa fa-info-circle"></i>About Us</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                               data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa fa-copyright"></i>Product Brand
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                {% if data %}
+                                {% for x in data%}
+                                <li><a class="dropdown-item" href="/user/product?more={{x.id}}">{{x.bname}}</a></li>
+                                <li>
+                                    <hr class="dropdown-divider bg-light">
+                                </li>
+                                {% endfor %}
+                                {% endif %}
+                                <li><a class="dropdown-item" href="/user/product">All Brands</a></li>
+                                <li>
+                                    <hr class="dropdown-divider bg-light">
+                                </li>
+                            </ul>
+                        </li>
+                         {% if request.session.userid %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="/user/myorder"><i class="fa fa-shipping-fast"></i>My Order</a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="/user/signup/"><i class="fa fa-user-plus"></i>Sign Up</a>
+                        </li>
+                        {% endif %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="/user/contact"><i class="fa fa-map-marker-alt"></i>Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="fa fa-rss"></i>Feedback</a>
+                        </li>
+
+                        {% if request.session.userid %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="/user/logout/"><i class="fa fa-sign-out-alt"></i>Logout</a>
+                        </li>
+                        <li class="nav-item">
+
+                            <a class="nav-link" href="/user/myprofile"><i class="fa fa-user"></i>  {{request.session.userid}}</a>
+                            
+                        </li>
+                        <li><a href="/user/cart"><i class="fa fa-shopping-cart text-warning mt-3"><b class="text-danger">{{cartcount}}</b></i></a></li>
+
+                        {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="/user/signin/"><i class="fa fa-sign-in-alt"></i> Login</a>
+                        </li>
+                        {% endif %}
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!--End Menu-->
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            {% block content %}
+
+            {% endblock %}
+        </div>
+    </div>
+
+    <div class="row services text-center py-3 bg-light">
+        <div>
+            <h3 style="text-align:center;">Our&nbsp<b style="color:#FF6D00;">Services</b></h3>
+            <div style="width:150px; height:2px; background:#FF6D00; margin:0px auto;"></div>
+        </div>
+        <div class="col-sm-4">
+            <i class="ics" style="line-height:35px;">%</i>
+            <h5>SHOPPING OFFERS</h5>
+            <p>Shopping Offers is applicable on every shopping</p>
+        </div>
+        <div class="col-sm-4">
+            <i class="fa fa-clock ics"></i>
+            <h5>DELEVERY ON TIME</h5>
+            <p>Delevered Product On Time at Door</p>
+        </div>
+        <div class="col-sm-4">
+            <i class="fa fa-lock ics"></i>
+            <h5>PAYMENT SECURITY</h5>
+            <p>100% Secure Payment</p>
+        </div>
+    </div>
+
+    <div class="row ufooter">
+        <div class="col-sm-4 p-4" style="justify-items: center; text-align: center;">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3562.013428388479!2d83.04779351504206!3d26.775841883186636!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399125090b3c0db3%3A0x31392222c62f340c!2sSmart%20Watch%20Market!5e0!3m2!1sen!2sin!4v1633594688161!5m2!1sen!2sin" width="300" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+        <div class="col-sm-4 p-5 pt-4">
+            <h4>Contact Address</h4>
+            <div style="width:200px; height: 2px; background:white;"></div>
+            <p style="margin-top: 8px;"><i class="fa fa-home" style="color:#FF6D00;"></i> Nagar Palika Buillding,
+                Titauwa Chauraha, Khalilabad Sant Kabir Nagar (U.P.) 272175</p>
+            <pre>
+<i class="fa fa-phone py-0" style="color:#FF6D00;"></i> +91 9315080925
+<i class="fa fa-phone py-0" style="color:#FF6D00;"></i> +91 9811368374
+<i class="fa fa-envelope py-0" style="color:#FF6D00;"></i> surajkumarnisha1998@gamil.com
+              </pre>
+        </div>
+        <div class="col-sm-4 px-4 pt-2 fs-1">
+            <a class="navbar-brand me-5 py-0 text-light" href="#"><i style="color:#FF6D00;">Smart</i><i style="color:;">Watch</i><i
+                    style="color:#FF6D00;" class="fa fa-shopping-cart"></i></a>
+            <p class="fs-6">Smart Watch Cart Companey is a branded companey watches seller & server. Online shopping
+                facilities is availeble here. Samart Watch Cart is PVT. LTD. Companey of INDIA</p>
+            <h6 style="line-height:10px">Also Visit</h6>
+            <div style="width:100px; height: 2px; background:white; line-height: 10px;"></div>
+            <a href="#"><i class="fab fa-facebook ic"></i></a>
+            <a href="#"><i class="fab fa-whatsapp ic" title="+919315080925"></i></a>
+            <a href="#"><i class="fab fa-instagram ic"></i></a>
+            <a href="#"><i class="fab fa-twitter ic"></i></a>
+            <a href="#"><i class="fab fa-youtube ic"></i></a>
+        </div>
+    </div>
+
+    <div class="row bfooter p-2" style="text-align: center;">
+        <div class="col-sm-10"> &copy; 2021 <b style="color:#FF6D00;"> Smart Watch</b> 2021 | Developed By: <b
+                style="color:#FF6D00;"> Suraj Kumar Nishad</b></div>
+        <div class="col-sm-2"><a href="#" style="color:#FF6D00; text-decoration: none;"> Privacy & Policy</a></div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12" style="height: 30px;background:#2a2d2f;"></div>
+    </div>
+</div>
+</body>
+<script src="{% static 'js/bootstrap.js' %}"></script>
+<script src="{% static 'js/jquery-3.6.0.js' %}"></script>
+<script src="{% static 'js/jquery-ui.min.js' %}"></script>
+<script>
+  var preloader=document.getElementById('loader');
+  function myFunction() {
+    preloader.style.display='none';
+  }
+</script>
+</html>

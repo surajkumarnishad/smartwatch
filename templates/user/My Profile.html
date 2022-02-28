@@ -1,0 +1,150 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} My Profile{% endblock %}
+
+{% block content %}
+<style>
+    .account-settings .user-profile {
+    margin: 0 0 1rem 0;
+    padding-bottom: 1rem;
+    text-align: center;
+}
+.account-settings .user-profile .user-avatar {
+    margin: 0 0 1rem 0;
+}
+.account-settings .user-profile .user-avatar img {
+    width: 90px;
+    height: 90px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    border-radius: 100px;
+}
+.account-settings .user-profile h5.user-name {
+    margin: 0 0 0.5rem 0;
+}
+.account-settings .user-profile h6.user-email {
+    margin: 0;
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: #9fa8b9;
+}
+.account-settings .about {
+    margin: 2rem 0 0 0;
+    text-align: center;
+}
+.account-settings .about h5 {
+    margin: 0 0 15px 0;
+    color: #007ae1;
+}
+.account-settings .about p {
+    font-size: 0.825rem;
+}
+.form-control {
+	display: inline;
+	width: 300px;
+    border: 1px solid #cfd1d8;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    font-size: .825rem;
+    background: #ffffff;
+    color: #2e323c;
+}
+
+.card {
+    background: #ffffff;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    border: 0;
+    margin-bottom: 1rem;
+    border: 2px groove orange;
+}
+.card:hover
+{
+transform: translateY(0px) scaleX(1.0);
+ box-shadow: 0px 0px 0px 0px;
+ transition: transform;
+}
+label{
+	display: block;
+}
+
+</style>
+<div class="container-fluid border bg-light my-5 py-3">
+	
+    <div class="row">
+        <div class="col-sm-12 bg-warning">
+            <div>
+    <h3 style="text-align:center;">My&nbsp<b style="color:#5396cd;">Profile</b></h3>
+    <div style="width:150px; height:2px; background:#5396cd; margin:0px auto;"></div>
+    </div>
+        </div>
+
+    </div>
+    {% if p %}
+    {% for x in p %}
+    <div class="container">
+<div class="row gutters mt-3">
+<div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+<div class="card h-100">
+	<div class="card-body">
+		<div class="account-settings">
+			<div class="user-profile">
+				<div class="user-avatar">
+					<img src="/{{x.Photo}}"  alt="">
+				</div>
+				<h5 class="user-name">{{x.Name}}</h5>
+				<h6 class="user-email">{{x.Email}}</h6>
+			</div>
+			<div class="about">
+				<h5>About</h5>
+				<p>I'm {{x.Name}}. Full Stack Designer I enjoy creating user-centric, delightful and human experiences.</p>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+<div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+<div class="row">
+	<div class="col-sm-1"></div>
+	<div class="col-sm-10 p-4 text-dark bg-light card"
+	     style="border-radius: 10px; font-size: 17px; font-weight: bold;">
+	     
+	    <form method="POST" enctype="multipart/form-data">
+	        {% csrf_token %} <!--cross site reforgery-->
+	        <div class="row">
+	     	<div class="col-sm-6">
+	     	<label>Name:</label>
+	        <input type="text" name="name" value="{{x.Name}}" class="form-control mb-3">
+	        <label>Gender:</label>
+	        <input type="radio" name="gender" value="male"> Male
+	        <input type="radio" name="gender" value="female"> Female<br><br>
+	        <label>Password:</label>
+	        <input type="password" name="passwd"  class="form-control mb-3" value="{{x.Password}}">
+	        <input class="mb-3" type="file" name="fu" accept=".jpg">
+	     	</div>
+	     	<div class="col-sm-6">
+	     	<label>Date of Birth:</label>
+	        <input class="form-control" type="date" name="dob"><br><br>	
+	        <label>Mobile Number:</label>
+	        <input type="number" name="mobile" class="form-control mb-3" value="{{x.Mobile}}">
+	        <fieldset>
+	        <legend style="font-size:18px;">Address:</legend>
+	        <textarea class="form-control" name="address" cols="20" rows="3">{{x.Address}}</textarea>
+	        </fieldset>
+	     	</div>
+	     	</div><br>
+	     	<center><input class="btn btn-success m-2 " id="update" type="submit" value="Update Profile"></center>   
+	    </form>
+	</div>
+	<div class="col-sm-1"></div>
+</div>
+</div>
+</div>
+</div>
+    {% endfor %}
+    {% endif %}
+{% endblock %}
+
+

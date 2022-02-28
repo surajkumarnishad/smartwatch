@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} My Cart{% endblock %}
+
+{% block content %}
+<div class="container-fluid border bg-light my-5 py-3">
+    <div class="row">
+        <div class="col-sm-12 bg-warning">
+            <div>
+    <h3 style="text-align:center;">My&nbsp<b style="color:#5396cd;">Cart</b></h3>
+    <div style="width:150px; height:2px; background:#5396cd; margin:0px auto;"></div>
+    </div>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-sm-12 bg-info">
+            <table class="table table-scripted">
+          <tr>
+          <th>Product Id</th>
+          <th>Picture</th>
+          <th>Product Name</th>
+          <th>Product Cat</th>
+          <th>Description</th>
+          <th>Total Price</th>
+          <th>Discounted Price</th>
+          <th>Remove</th>
+          <th>Order</th>
+          </tr>
+          {% if cart %}
+          {% for x in cart%}
+          <tr>
+              <td>{{x.1}}</td>
+              <td><img src="/{{x.7}}" class="img-thumbnail" style="max-height:100px"/></td>
+              <td>{{x.6}}</td>
+              <td>{{x.12}}</td>
+              <td>{{x.11}}</td>
+              <td><i class="btn btn-outline-danger"><s>{{x.9}}</s></i></td>
+              <td><i class="btn btn-outline-success">{{x.10}}</i></td>
+              <td><a href="/user/cart?pid={{x.0}}" class="btn btn-danger">Remove Item</a></td>
+              <td><a href="/user/proccess?pid={{x.1}}&bn=orderfromcart" class="btn btn-warning">Order Now</a></td>
+          </tr>
+          {% endfor%}
+          {% endif%}
+
+
+      </table>
+        </div>
+    </div>
+    </div>
+
+{% endblock %}
+
+

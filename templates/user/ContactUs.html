@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Contact Us {% endblock %}
+
+{% block content %}
+<div class="row contact p-4">
+    <div>
+    <h3 style="text-align:center;">Contact&nbsp<b style="color:#FF6D00;">Us</b></h3>
+    <div style="width:150px; height:2px; background:#FF6D00; margin:0px auto;"></div>
+    </div><br><br><br>
+
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10">
+        <div class="row">
+            <div class="col-sm-5 p-4 text-dark" style="border-radius: 10px; background:rgba(255, 109, 0, .7); font-weight: bold;">
+                {% if request.session.userid %}
+                {% if p %}
+                {% for x in p %}
+                <form method="POST">
+                    {% csrf_token %} <!--cross site reforgery-->
+                    <div class="alert alert-success">
+                        {{s}}
+                    </div>
+                    Name :<input type="text" name="name" required class="form-control" value="{{x.Name}}">
+                     Mobile No.: <input type="number" name="mobile" required class="form-control" value="{{x.Mobile}}">
+                     E-mail Address :<input type="email" name="email" required class="form-control" value="{{x.Email}}">
+                     <div>Message :</div>
+                     <textarea name="msg" cols="40" rows="4"></textarea><br>
+                    <input class="btn btn-dark" type="submit" value="SAVE">
+                </form>
+                {% endfor %}
+                {% endif %}
+                {% else %}
+                <form method="POST">
+                    {% csrf_token %} <!--cross site reforgery-->
+                    <div class="alert alert-success">
+                        {{s}}
+                    </div>
+                    Name :<input type="text" name="name" required class="form-control" placeholder="Enter Your Name">
+                     Mobile No.: <input type="number" name="mobile" required class="form-control" placeholder="Enter Your Number">
+                     E-mail Address :<input type="email" name="email" required class="form-control" placeholder="Enter Your Email">
+                     <div>Message :</div>
+                     <textarea name="msg" cols="40" rows="4"></textarea><br>
+                    <input class="btn btn-dark" type="submit" value="SAVE">
+                </form>
+                {% endif %}
+            </div>
+            <div class="col-sm-7">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3562.013428388479!2d83.04779351504206!3d26.775841883186636!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399125090b3c0db3%3A0x31392222c62f340c!2sSmart%20Watch%20Market!5e0!3m2!1sen!2sin!4v1633594688161!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-1"></div>
+</div>
+
+{% endblock %}
+
+

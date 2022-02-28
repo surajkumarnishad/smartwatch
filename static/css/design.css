@@ -1,0 +1,63 @@
+*
+{
+	margin: 0px;
+	padding: 0px;
+}
+
+#topper
+{
+	position: sticky;
+	top:0px;
+	z-index: 99999;
+}
+#load
+      {
+      color:blue;
+      animation: load 1s infinite linear;
+      }
+@keyframes load
+    {
+    25%{
+        color:red;
+    }
+    50%{
+        color:#5396cd;
+    }
+    75%{
+       color:blue;
+    }
+
+    100%{
+        color:red;
+    }
+    }
+    
+.category
+    {
+    min-height:300px;
+    }
+.newproduct
+    {
+    min-height:400px;
+    //background:#5396cd;
+    }
+.services
+   {
+   min-height: 300px;
+     
+   }
+.ufooter
+    {
+    min-height:250px;
+    background:#2a2d2f;
+    color: white;
+    }
+.bfooter
+    {
+    min-height:40px;
+    background:black;
+    color: white;
+    }
+.top{
+    text-align: center;
+    }

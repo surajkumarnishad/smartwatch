@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} My Order{% endblock %}
+
+{% block content %}
+<div class="container-fluid border bg-light my-5 py-3">
+    <div class="row">
+        <div class="col-sm-12 bg-warning">
+            <div>
+    <h3 style="text-align:center;">My&nbsp<b style="color:#5396cd;">Order</b></h3>
+    <div style="width:150px; height:2px; background:#5396cd; margin:0px auto;"></div>
+    </div>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-sm-12 bg-light">
+            <table class="table table-scripted">
+          <tr>
+          <th>Product Id</th>
+          <th>Picture</th>
+          <th>Product Name</th>
+          <th>Product Cat</th>
+          <th>Description</th>
+          <th>Total Price</th>
+          <th>Discounted Price</th>
+          <th>Cancel Order</th>
+          <th>Remarks</th>
+          <th>Date</th>
+          </tr>
+          {% if pendingorder %}
+          {% for x in pendingorder %}
+          <tr>
+              <td>{{x.1}}</td>
+              <td><img src="/{{x.8}}" class="img-thumbnail" style="max-height:100px"/></td>
+              <td>{{x.7}}</td>
+              <td>{{x.15}}</td>
+              <td>{{x.12}}</td>
+              <td><i class="btn btn-outline-danger"><s>{{x.10}}</s></i></td>
+              <td><i class="btn btn-outline-success">{{x.11}}</i></td>
+              <td><a href="/user/myorder?oid={{x.0}}" class="btn btn-danger">Cancel</a></td>
+              <td><a href="#" class="btn btn-outline-success">{{x.3}}</a></td>
+              <td>{{x.13}}</td>
+          </tr>
+          {% endfor%}
+          {% endif%}
+
+
+      </table>
+        </div>
+    </div>
+    </div>
+
+{% endblock %}
+
+

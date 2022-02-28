@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} About Us {% endblock %}
+
+{% block content %}
+<div class="row py-4">
+    <div>
+        <i><h3 style="text-align:center; font-family: impact;">About&nbsp<b style="color:#FF6D00;">Us</b></h3></i>
+        <div style="width:150px; height:2px; background:#FF6D00; margin:0px auto;"></div>
+    </div>
+    <div style="height:20px"></div>
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10">
+        <div class="row">
+            <div class="col-sm-6 text-center">
+                <h3 style="font-family:impact;">Inception</h3>
+            </div>
+            <div class="col-sm-6 border-warning"><i>
+                Launched in 2021, Just watches is the Lifestyle chain under the Priority Group, a leading fashion
+                conglomerate that pioneered in the year 2021 through the launch of luxury watch brands in India. It is
+                the brainchild of Mr. Shailesh and Mrs. Manisha Sangani. With the first outlet opened in New Delhi, Just
+                watches and Just In Vogue now retails through 76 exclusive outlets present in 10 cities across India.</i>
+            </div>
+        </div>
+        <br><br>
+        <div class="row">
+            <div class="col-sm-6 text-center">
+                <img src="{% static 'images/slider1.jpg'%}" style="max-height:400px" class="d-block w-100" alt="...">
+            </div>
+            <div class="col-sm-6 border-warning">
+                <h3>To India's Largest & most trusted Watch Retailer</h3>
+                Housing over 40 top international and national brands, our diverse portfolio of world class brands makes
+                us a favorite destination of any watch lover. We offer the latest fashion products of coveted lifestyle
+                brands all under one roof.
+                We work to create an excellent retailing ambiance, constant connection and service for you where you can
+                buy your favorite brands while getting the best deals.
+                We strive to be a bench mark in Luxury Retailing by marketing branded lifestyle products in a world
+                class ambience.
+            </div>
+        </div><br><br>
+        <div class="row">
+            <div class="col-sm-6">
+                <h3>Services</h3>
+                Every order placed on our website is fulfilled directly from one of our 76 stores across India. You can
+                always count on us for free 1-2 day delivery, hassle-free returns, great prices, and awesome, extra
+                speedy customer service.
+                If you are in need of any assistance post your purchase, you can walk in to one of our stores and our
+                helpful staff is always available to answer any questions you may have or help in any way that is
+                required. We are at your service!
+            </div>
+            <div class="col-sm-6">
+                <img src="{% static 'images/slider.jpg'%}" style="max-height:400px" class="d-block w-100" alt="...">
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-1"></div>
+</div>
+{% endblock %}
+
+

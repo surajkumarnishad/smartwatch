@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Sign Up{% endblock %}
+
+{% block content %}
+<div class="row contact p-4">
+    <div>
+        <h3 style="text-align:center;">SIGN&nbsp<b style="color:#FF6D00;">UP</b></h3>
+        <div style="width:150px; height:2px; background:#FF6D00; margin:0px auto;"></div>
+    </div>
+    <br><br><br>
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10">
+        <div class="row">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-6 p-4 text-dark bg-light"
+                 style="border-radius: 10px; font-size: 17px; font-weight: bold;">
+
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %} <!--cross site reforgery-->
+                    Name :<input type="text" name="name" required class="form-control mb-3"
+                                 placeholder="Enter Your Name">
+                    DOB :<input type="date" name="dob" required><br><br>
+                    Gender :&nbsp<input type="radio" name="gender" required value="male"> Male
+                    <input type="radio" name="gender" required value="female"> Female<br><br>
+                    Mobile No.: <input type="number" name="mobile" required class="form-control mb-3"
+                                       placeholder="Enter Your Number">
+                    E-mail Address :<input type="email" name="email" required class="form-control mb-3"
+                                           placeholder="Enter Your Email">
+                    Password :<input type="password" name="passwd" required class="form-control mb-3"
+                                     placeholder="Enter Your Password">
+                    <div>Address :</div>
+                    <textarea name="address" cols="40" rows="4"></textarea><br>
+                    <input class="mb-3" type="file" name="fu" accept="pdf/*"><br>
+                    <input class="btn btn-success m-2" type="submit" value="SAVE">
+                    <input class="btn btn-warning m-2" type="reset" value="RESET">
+                </form>
+            </div>
+            <div class="col-sm-3">
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-1"></div>
+</div>
+
+{% endblock %}
+
+
